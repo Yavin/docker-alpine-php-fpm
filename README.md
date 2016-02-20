@@ -1,5 +1,7 @@
 # Docker image for php-fpm
 
+[![](https://badge.imagelayers.io/yavin/alpine-php-fpm:latest.svg)](https://imagelayers.io/?images=yavin/alpine-php-fpm:latest)
+
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~60MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
 * PHP 7.0.3
 
