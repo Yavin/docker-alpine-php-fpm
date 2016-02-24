@@ -2,25 +2,33 @@
 
 [![](https://badge.imagelayers.io/yavin/alpine-php-fpm:latest.svg)](https://imagelayers.io/?images=yavin/alpine-php-fpm:latest)
 
+Tags:
+* `latest`, `7.0`, `7.0.3` [Dokerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `5.6`, `5.6.17` [Dokerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
+
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~60MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
 * PHP 7.0.3
 
-#### PHP extensions included:
-* fpm
-* session
-* opcache
-* pdo_mysql
-* mysqlnd
-* json
-* xml
-* curl
-* gd
-* intl
-* pdo
-* mbstring
-* dom
-* ctype
-* posix
+## Running
+```
+docker run --rm -p 9000:9000 -v /path/of/application:/app yavin/alpine-php-fpm:7.0
+```
+
+Fallowing configuration allow to connect to this FPM setup:
+<pre>
+server {
+    # here some other configuration...
+
+    location ~ \.php(/|$) {
+        include       fastcgi_params;
+        fastcgi_param DOCUMENT_ROOT   <b>/app/web</b>;
+        fastcgi_param SCRIPT_FILENAME <b>/app/web</b>$fastcgi_script_name;
+        fastcgi_pass  <b>fpm-host-name:9000</b>;
+    }
+}
+</pre>
+
+Please note the path that is passed to FPM and compare it with the `docker run` command. Above example assume that the `/app/web` is the "public" folder of your app. If paths in PFM container are the same as in Nginx you can replace it with `$realpath_root` nginx variable.
 
 ## Custom php.ini settings
 Create `Dockerfile` file with fallowing content and php.ini file with desired settings (look at php.ini file in this repository)
@@ -31,13 +39,7 @@ COPY php.ini /etc/php7/conf.d/50-setting.ini
 And then 
 ```
 docker build -t my-php-fpm .
-docker run --rm -p 9000:9000 -v /your/app/folder:/www my-php-fpm:latest
-```
-
-## Add extension that you need
-```
-FROM yavin/alpine-php-fpm:7.0
-RUN apk --update add php7-zip && rm -rf /var/cache/apk/*
+docker run --rm -p 9000:9000 -v /path/of/application:/app my-php-fpm:latest
 ```
 
 ## Change FPM parameters
@@ -56,12 +58,28 @@ FROM yavin/alpine-php-fpm:7.0
 COPY php-fpm.conf /etc/php7/php-fpm.conf
 ```
 
-## Running
+## Add extension that you need
 ```
-docker run --rm -p 9000:9000 -v /your/app/folder:/www yavin/alpine-php-fpm:7.0
+FROM yavin/alpine-php-fpm:7.0
+RUN apk --update add php7-zip && rm -rf /var/cache/apk/*
 ```
 
-Remember, that your web serwer must also have mounted application path at same location as this fpm container (`/www` folder).
+#### PHP extensions included:
+* fpm
+* session
+* opcache
+* pdo_mysql
+* mysqlnd
+* json
+* xml
+* curl
+* gd
+* intl
+* pdo
+* mbstring
+* dom
+* ctype
+* posix
 
 ##### All php7 available packages in repository
 ```

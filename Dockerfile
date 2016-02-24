@@ -22,7 +22,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
 COPY php.ini /etc/php7/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php7/php-fpm.conf
 
-VOLUME /www
+VOLUME /app
 EXPOSE 9000
 
 CMD ["php-fpm7", "-F"]
