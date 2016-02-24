@@ -19,7 +19,7 @@ RUN apk --update add \
 COPY php.ini /etc/php/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php/php-fpm.conf
 
-VOLUME /www
+VOLUME /app
 EXPOSE 9000
 
 CMD ["php-fpm", "-F"]
