@@ -11,7 +11,7 @@ Image for php-fpm. It is based on Alpine linux and thats why it is very small (~
 
 ## Running
 ```
-docker run m -p 9000:9000 -v /path/of/application:/app yavin/alpine-php-fpm:7.0
+docker run --rm -p 9000:9000 -v /path/of/application:/app yavin/alpine-php-fpm:7.0
 ```
 
 Fallowing nginx configuration allow to connect to this FPM setup:
