@@ -1,17 +1,17 @@
 # Docker image for php-fpm
 
-[![](https://badge.imagelayers.io/yavin/alpine-php-fpm:5.6.svg)](https://imagelayers.io/?images=yavin/alpine-php-fpm:5.6)
+[![Build Status](https://travis-ci.org/Yavin/docker-alpine-php-fpm.svg?branch=5.6)](https://travis-ci.org/Yavin/docker-alpine-php-fpm)
 
 Tags:
-* `latest`, `7.0` [Dokerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
-* `5.6` [Dokerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
+* `latest`, `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~60MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
-* PHP 5.6.21
+* PHP 5.6.28
 
 ## Running
 ```
-docker run --rm -p 9000:9000 -v /path/of/application:/app yavin/alpine-php-fpm:5.6
+docker run --rm -p 9000:9000 -v /path/of/application:/application yavin/alpine-php-fpm:5.6
 ```
 
 Fallowing configuration allow to connect to this FPM setup:
@@ -21,28 +21,28 @@ server {
 
     location ~ \.php(/|$) {
         include       fastcgi_params;
-        fastcgi_param DOCUMENT_ROOT   <b>/app/web</b>;
-        fastcgi_param SCRIPT_FILENAME <b>/app/web</b>$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT   <b>/application/web</b>;
+        fastcgi_param SCRIPT_FILENAME <b>/application/web</b>$fastcgi_script_name;
         fastcgi_pass  <b>fpm-host-name:9000</b>;
     }
 }
 </pre>
 
 Please note the path that is passed to FPM and compare it with the `docker run` command.
-Above example assume that the `/app/web` is the "public" folder of your app.
-If paths in PFM container are the same as in Nginx you can replace it with `$realpath_root`
+Above example assume that the `/application/web` is the "public" folder of your app.
+If paths in FPM container are the same as in Nginx you can replace it with `$realpath_root`
 nginx variable.
 
 ## Custom php.ini settings
 Create `Dockerfile` file with fallowing content and php.ini file with desired settings (look at php.ini file in this repository)
 ```
 FROM yavin/alpine-php-fpm:5.6
-COPY php.ini /etc/php/conf.d/50-setting.ini
+COPY php.ini /etc/php5/conf.d/50-setting.ini
 ```
 And then
 ```
 docker build -t my-php-fpm .
-docker run --rm -p 9000:9000 -v /path/of/application:/app my-php-fpm:latest
+docker run --rm -p 9000:9000 -v /path/of/application:/application my-php-fpm:latest
 ```
 
 ## Change FPM parameters
@@ -58,7 +58,7 @@ pm.max_spare_servers = 5
 and build your image:
 ```
 FROM yavin/alpine-php-fpm:5.6
-COPY php-fpm.conf /etc/php/php-fpm.conf
+COPY php-fpm.conf /etc/php5/php-fpm.conf
 ```
 
 ## Add extension that you need
@@ -68,24 +68,45 @@ RUN apk --update add php-zip && rm -rf /var/cache/apk/*
 ```
 
 #### PHP extensions included:
-* fpm
-* iconv
-* opcache
-* pdo_mysql
-* json
-* xml
-* curl
-* gd
-* intl
-* pdo
-* mbstring
-* dom
-* ctype
-* posix
-* mcrypt
-* iconv
-* phar
-* openssl
+```
+[PHP Modules]
+Core
+ctype
+curl
+date
+dom
+ereg
+fileinfo
+filter
+gd
+hash
+iconv
+intl
+json
+libxml
+mbstring
+mcrypt
+mysqlnd
+openssl
+pcre
+PDO
+pdo_mysql
+Phar
+posix
+readline
+Reflection
+session
+SimpleXML
+SPL
+standard
+tokenizer
+xml
+xmlwriter
+Zend OPcache
+
+[Zend Modules]
+Zend OPcache
+```
 
 ##### All php available packages in repository
 ```
@@ -104,12 +125,10 @@ php5-imagick
 php5-zlib
 php5-pear-net_socket
 php5-calendar
-phpldapadmin
 php5-pdo_dblib
 php5-dba
 php5-mysqli
 php5-odbc
-phpmyadmin-doc
 php5-soap
 php5-shmop
 php5-wddx
@@ -117,12 +136,12 @@ php5-cli
 php5-pear-mail_mime
 php5-fpm
 php5-phpdbg
+php5-pear-auth_sasl
 php5-bz2
 php5-sockets
 php5-pear-mdb2-driver-mysqli
 php5-phalcon
 php5-memcache
-phpmyadmin
 php5-pear-mdb2-driver-sqlite
 php5-apache2
 php5-pdo_mysql
@@ -138,7 +157,6 @@ php5-gettext
 php5-mssql
 php5-pear-mdb2
 php5-mcrypt
-perl-php-serialization
 php5-exif
 php5-xmlreader
 php5-xcache
@@ -158,11 +176,9 @@ php5-pear-mdb2-driver-pgsql
 php5-common
 php5-sysvsem
 php5-pear-net_smtp
-perl-php-serialization-doc
 php5-posix
 php5-pdo_sqlite
 php5-dom
-xapian-bindings-php
 php5-curl
 php5-xsl
 php5-ldap
