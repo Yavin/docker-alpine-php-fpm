@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  fpm:
+    build: ..
+    container_name: test-fpm
+    volumes:
+      - ./symfony-standard:/application
+  nginx:
+    image: nginx:alpine
+    container_name: test-nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./symfony-standard:/application
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
