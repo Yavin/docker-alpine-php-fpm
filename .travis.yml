@@ -1,0 +1,27 @@
+language: php
+
+php: 7.0
+
+services:
+  - docker
+
+env:
+  matrix:
+    - SYMFONY_VERSION=3.1
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - cd test
+  - wget -O symfony.zip https://github.com/symfony/symfony-standard/archive/$SYMFONY_VERSION.zip
+  - unzip symfony.zip
+  - mv symfony-standard-$SYMFONY_VERSION symfony-standard
+  - chmod 777 symfony-standard/var/cache symfony-standard/var/logs symfony-standard/var/sessions
+  - docker-compose up --force-recreate --build -d
+  - docker ps -a
+  - composer install --working-dir=symfony-standard --no-scripts -n
+
+script:
+  - curl http://127.0.0.1/config.php | grep "All checks passed successfully."
