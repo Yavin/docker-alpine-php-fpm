@@ -11,7 +11,7 @@ Image for php-fpm. It is based on Alpine linux and thats why it is very small (~
 
 ## Running
 ```
-docker run --rm -p 9000:9000 -v /path/of/application:/app yavin/alpine-php-fpm:7.0
+docker run --rm -p 9000:9000 -v /path/of/application:/application yavin/alpine-php-fpm:7.0
 ```
 
 Fallowing nginx configuration allow to connect to this FPM setup:
@@ -21,15 +21,15 @@ server {
 
     location ~ \.php(/|$) {
         include       fastcgi_params;
-        fastcgi_param DOCUMENT_ROOT   <b>/app/web</b>;
-        fastcgi_param SCRIPT_FILENAME <b>/app/web</b>$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT   <b>/application/web</b>;
+        fastcgi_param SCRIPT_FILENAME <b>/application/web</b>$fastcgi_script_name;
         fastcgi_pass  <b>fpm-host-name:9000</b>;
     }
 }
 </pre>
 
 Please note the path that is passed to FPM and compare it with the `docker run` command.
-Above example assume that the `/app/web` is the "public" folder of your app.
+Above example assume that the `/application/web` is the "public" folder of your app.
 If paths in FPM container are the same as in Nginx you can replace it with `$realpath_root`
 nginx variable.
 
@@ -42,7 +42,7 @@ COPY php.ini /etc/php7/conf.d/50-setting.ini
 And then 
 ```
 docker build -t my-php-fpm .
-docker run --rm -p 9000:9000 -v /path/of/application:/app my-php-fpm:latest
+docker run --rm -p 9000:9000 -v /path/of/application:/application my-php-fpm:latest
 ```
 
 ## Change FPM parameters
