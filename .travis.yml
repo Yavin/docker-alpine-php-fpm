@@ -25,3 +25,7 @@ install:
 
 script:
   - curl http://127.0.0.1/config.php | grep "All checks passed successfully."
+
+after_failure:
+  - docker logs test-fpm
+  - docker logs test-nginx
