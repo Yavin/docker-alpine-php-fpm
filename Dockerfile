@@ -28,7 +28,6 @@ COPY php-fpm.conf /etc/php7/php-fpm.conf
 
 RUN ln -s /usr/bin/php7 /usr/bin/php
 
-VOLUME /app
 EXPOSE 9000
 
 CMD ["php-fpm7", "-F"]
