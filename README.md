@@ -69,74 +69,121 @@ RUN apk --update add php7-ftp && rm -rf /var/cache/apk/*
 ```
 
 #### PHP extensions included:
-* bcmath
-* dom
-* ctype
-* curl
-* fpm
-* gd
-* iconv
-* intl
-* json
-* mbstring
-* mcrypt
-* mysqlnd
-* opcache
-* openssl
-* pdo
-* pdo_mysql
-* pdo_pgsql
-* pdo_sqlite
-* phar
-* posix
-* session
-* soap
-* xml
-* zip
+```
+$ php -m
+[PHP Modules]
+bcmath
+Core
+ctype
+curl
+date
+dom
+fileinfo
+filter
+gd
+hash
+iconv
+intl
+json
+libxml
+mbstring
+mcrypt
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_mysql
+pdo_pgsql
+pdo_sqlite
+Phar
+posix
+readline
+Reflection
+session
+SimpleXML
+soap
+SPL
+standard
+tokenizer
+xml
+xmlwriter
+Zend OPcache
+zip
+
+[Zend Modules]
+Zend OPcache
+```
 
 ##### Other php7 packages available in repository
 ```
-dba
-sqlite3
-pear
-phpdbg
-litespeed
-gmp
-pcntl
-common
-xsl
-enchant
-pspell
-snmp
-doc
-dev
-xmlrpc
-embed
-xmlreader
-exif
-ldap
-gettext
-sysvshm
-shmop
-odbc
-imap
-pdo_dblib
-pgsql
-pdo_odbc
-xdebug
-apache2
-cgi
-wddx
-calendar
-tidy
-sockets
-apc
-sysvmsg
-zlib
-ftp
-sysvsem
-bz2
-mysqli
+$ apk --update search php7
+php7-intl-7.0.15-r0
+php7-openssl-7.0.15-r0
+php7-dba-7.0.15-r0
+php7-sqlite3-7.0.15-r0
+php7-pear-7.0.15-r0
+php7-phpdbg-7.0.15-r0
+php7-litespeed-7.0.15-r0
+php7-gmp-7.0.15-r0
+php7-pdo_mysql-7.0.15-r0
+php7-pcntl-7.0.15-r0
+php7-common-7.0.15-r0
+php7-xsl-7.0.15-r0
+php7-fpm-7.0.15-r0
+php7-mysqlnd-7.0.15-r0
+php7-enchant-7.0.15-r0
+php7-pspell-7.0.15-r0
+php7-snmp-7.0.15-r0
+php7-doc-7.0.15-r0
+php7-mbstring-7.0.15-r0
+php7-dev-7.0.15-r0
+php7-xmlrpc-7.0.15-r0
+php7-embed-7.0.15-r0
+php7-xmlreader-7.0.15-r0
+php7-pdo_sqlite-7.0.15-r0
+php7-exif-7.0.15-r0
+php7-opcache-7.0.15-r0
+php7-ldap-7.0.15-r0
+php7-posix-7.0.15-r0
+php7-session-7.0.15-r0
+php7-gd-7.0.15-r0
+php7-gettext-7.0.15-r0
+php7-json-7.0.15-r0
+php7-xml-7.0.15-r0
+php7-7.0.15-r0
+php7-iconv-7.0.15-r0
+php7-sysvshm-7.0.15-r0
+php7-curl-7.0.15-r0
+php7-shmop-7.0.15-r0
+php7-odbc-7.0.15-r0
+php7-phar-7.0.15-r0
+php7-pdo_pgsql-7.0.15-r0
+php7-imap-7.0.15-r0
+php7-pdo_dblib-7.0.15-r0
+php7-pgsql-7.0.15-r0
+php7-pdo_odbc-7.0.15-r0
+php7-xdebug-2.5.0-r1
+php7-zip-7.0.15-r0
+php7-apache2-7.0.15-r0
+php7-cgi-7.0.15-r0
+php7-ctype-7.0.15-r0
+php7-mcrypt-7.0.15-r0
+php7-wddx-7.0.15-r0
+php7-bcmath-7.0.15-r0
+php7-calendar-7.0.15-r0
+php7-tidy-7.0.15-r0
+php7-dom-7.0.15-r0
+php7-sockets-7.0.15-r0
+php7-soap-7.0.15-r0
+php7-apcu-5.1.8-r0
+php7-sysvmsg-7.0.15-r0
+php7-zlib-7.0.15-r0
+php7-ftp-7.0.15-r0
+php7-sysvsem-7.0.15-r0
+php7-pdo-7.0.15-r0
+php7-bz2-7.0.15-r0
+php7-mysqli-7.0.15-r0
 ```
 
 ###### Licence
