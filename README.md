@@ -1,6 +1,7 @@
 # Docker image for php-fpm
 
 [![Build Status](https://travis-ci.org/Yavin/docker-alpine-php-fpm.svg?branch=master)](https://travis-ci.org/Yavin/docker-alpine-php-fpm)
+[![](https://images.microbadger.com/badges/image/yavin/alpine-php-fpm:7.0.svg)](https://microbadger.com/images/yavin/alpine-php-fpm:7.0)
 
 Tags:
 * `latest`, `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
