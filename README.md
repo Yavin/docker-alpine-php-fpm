@@ -7,7 +7,7 @@ Tags:
 * `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~65MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
-* PHP 7.0.12
+* PHP 7.0.15
 
 ## Running
 ```
@@ -64,78 +64,78 @@ COPY php-fpm.conf /etc/php7/php-fpm.conf
 ## Add extension that you need
 ```
 FROM yavin/alpine-php-fpm:7.0
-RUN apk --update add php7-zip && rm -rf /var/cache/apk/*
+RUN apk --update add php7-ftp && rm -rf /var/cache/apk/*
 ```
 
 #### PHP extensions included:
-* fpm
-* session
-* opcache
-* pdo_mysql
-* mysqlnd
-* json
-* xml
-* curl
-* gd
-* intl
-* pdo
-* mbstring
+* bcmath
 * dom
 * ctype
-* posix
-* mcrypt
+* curl
+* fpm
+* gd
 * iconv
-* phar
+* intl
+* json
+* mbstring
+* mcrypt
+* mysqlnd
+* opcache
 * openssl
+* pdo
+* pdo_mysql
+* pdo_pgsql
+* pdo_sqlite
+* phar
+* posix
+* session
+* soap
+* xml
+* zip
 
 ##### Other php7 packages available in repository
 ```
-php7-dba
-php7-sqlite3
-php7-pear
-php7-phpdbg
-php7-litespeed
-php7-gmp
-php7-pcntl
-php7-common
-php7-xsl
-php7-enchant
-php7-pspell
-php7-snmp
-php7-doc
-php7-dev
-php7-xmlrpc
-php7-embed
-php7-xmlreader
-php7-pdo_sqlite
-php7-exif
-php7-ldap
-php7-gettext
-php7-sysvshm
-php7-shmop
-php7-odbc
-php7-pdo_pgsql
-php7-imap
-php7-pdo_dblib
-php7-pgsql
-php7-pdo_odbc
-php7-zip
-php7-apache2
-php7-cgi
-php7-readline
-php7-wddx
-php7-bcmath
-php7-calendar
-php7-tidy
-php7-sockets
-php7-soap
-php7-sysvmsg
-php7-zlib
-php7-ftp
-php7-sysvsem
-php7-pdo
-php7-bz2
-php7-mysqli
+dba
+sqlite3
+pear
+phpdbg
+litespeed
+gmp
+pcntl
+common
+xsl
+enchant
+pspell
+snmp
+doc
+dev
+xmlrpc
+embed
+xmlreader
+exif
+ldap
+gettext
+sysvshm
+shmop
+odbc
+imap
+pdo_dblib
+pgsql
+pdo_odbc
+xdebug
+apache2
+cgi
+wddx
+calendar
+tidy
+sockets
+apc
+sysvmsg
+zlib
+ftp
+sysvsem
+bz2
+mysqli
 ```
 
 ###### Licence
