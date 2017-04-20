@@ -26,7 +26,8 @@ install:
   - composer install --working-dir=symfony-standard --no-scripts -n
 
 script:
-  - curl http://127.0.0.1/config.php | grep "All checks passed successfully."
+  - curl http://127.0.0.1/config.php | grep "All checks passed successfully." ||
+    curl http://127.0.0.1/config.php | grep "Your configuration looks good to run Symfony."
 
 after_failure:
   - docker logs test-fpm

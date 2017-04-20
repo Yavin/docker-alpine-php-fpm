@@ -1,11 +1,13 @@
-FROM alpine:3.5
+FROM alpine:edge
 
-RUN apk --update add \
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
+    apk --update add \
         php7 \
         php7-bcmath \
         php7-dom \
         php7-ctype \
         php7-curl \
+        php7-fileinfo \
         php7-fpm \
         php7-gd \
         php7-iconv \
@@ -25,13 +27,13 @@ RUN apk --update add \
         php7-session \
         php7-soap \
         php7-xml \
+        php7-xmlreader \
+        php7-xmlwriter \
         php7-zip \
     && rm -rf /var/cache/apk/*
 
 COPY php.ini /etc/php7/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php7/php-fpm.conf
-
-RUN ln -s /usr/bin/php7 /usr/bin/php
 
 EXPOSE 9000
 
