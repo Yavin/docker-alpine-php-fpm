@@ -8,7 +8,7 @@ Tags:
 * `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~65MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
-* PHP 7.0.15
+* PHP 7.0.16
 
 ## Running
 ```
