@@ -1,13 +1,13 @@
 # Docker image for php-fpm
 
-[![Build Status](https://travis-ci.org/Yavin/docker-alpine-php-fpm.svg?branch=master)](https://travis-ci.org/Yavin/docker-alpine-php-fpm)
+[![Build Status](https://travis-ci.org/Yavin/docker-alpine-php-fpm.svg?branch=7.0)](https://travis-ci.org/Yavin/docker-alpine-php-fpm/branches)
 [![](https://images.microbadger.com/badges/image/yavin/alpine-php-fpm:7.0.svg)](https://microbadger.com/images/yavin/alpine-php-fpm:7.0)
 
 Tags:
-* `latest`, `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/7.0/Dockerfile)
 * `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
-Image for php-fpm. It is based on Alpine linux and thats why it is very small (~65MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
+Image for php-fpm. It is based on Alpine linux and thats why it is very small. Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
 * PHP 7.0.16
 
 ## Running
@@ -118,72 +118,72 @@ Zend OPcache
 ##### Other php7 packages available in repository
 ```
 $ apk --update search php7
-php7-intl-7.0.15-r0
-php7-openssl-7.0.15-r0
-php7-dba-7.0.15-r0
-php7-sqlite3-7.0.15-r0
-php7-pear-7.0.15-r0
-php7-phpdbg-7.0.15-r0
-php7-litespeed-7.0.15-r0
-php7-gmp-7.0.15-r0
-php7-pdo_mysql-7.0.15-r0
-php7-pcntl-7.0.15-r0
-php7-common-7.0.15-r0
-php7-xsl-7.0.15-r0
-php7-fpm-7.0.15-r0
-php7-mysqlnd-7.0.15-r0
-php7-enchant-7.0.15-r0
-php7-pspell-7.0.15-r0
-php7-snmp-7.0.15-r0
-php7-doc-7.0.15-r0
-php7-mbstring-7.0.15-r0
-php7-dev-7.0.15-r0
-php7-xmlrpc-7.0.15-r0
-php7-embed-7.0.15-r0
-php7-xmlreader-7.0.15-r0
-php7-pdo_sqlite-7.0.15-r0
-php7-exif-7.0.15-r0
-php7-opcache-7.0.15-r0
-php7-ldap-7.0.15-r0
-php7-posix-7.0.15-r0
-php7-session-7.0.15-r0
-php7-gd-7.0.15-r0
-php7-gettext-7.0.15-r0
-php7-json-7.0.15-r0
-php7-xml-7.0.15-r0
-php7-7.0.15-r0
-php7-iconv-7.0.15-r0
-php7-sysvshm-7.0.15-r0
-php7-curl-7.0.15-r0
-php7-shmop-7.0.15-r0
-php7-odbc-7.0.15-r0
-php7-phar-7.0.15-r0
-php7-pdo_pgsql-7.0.15-r0
-php7-imap-7.0.15-r0
-php7-pdo_dblib-7.0.15-r0
-php7-pgsql-7.0.15-r0
-php7-pdo_odbc-7.0.15-r0
+php7-intl-7.0.16-r0
+php7-openssl-7.0.16-r0
+php7-dba-7.0.16-r0
+php7-sqlite3-7.0.16-r0
+php7-pear-7.0.16-r0
+php7-phpdbg-7.0.16-r0
+php7-litespeed-7.0.16-r0
+php7-gmp-7.0.16-r0
+php7-pdo_mysql-7.0.16-r0
+php7-pcntl-7.0.16-r0
+php7-common-7.0.16-r0
+php7-xsl-7.0.16-r0
+php7-fpm-7.0.16-r0
+php7-mysqlnd-7.0.16-r0
+php7-enchant-7.0.16-r0
+php7-pspell-7.0.16-r0
+php7-snmp-7.0.16-r0
+php7-doc-7.0.16-r0
+php7-mbstring-7.0.16-r0
+php7-dev-7.0.16-r0
+php7-xmlrpc-7.0.16-r0
+php7-embed-7.0.16-r0
+php7-xmlreader-7.0.16-r0
+php7-pdo_sqlite-7.0.16-r0
+php7-exif-7.0.16-r0
+php7-opcache-7.0.16-r0
+php7-ldap-7.0.16-r0
+php7-posix-7.0.16-r0
+php7-session-7.0.16-r0
+php7-gd-7.0.16-r0
+php7-gettext-7.0.16-r0
+php7-json-7.0.16-r0
+php7-xml-7.0.16-r0
+php7-7.0.16-r0
+php7-iconv-7.0.16-r0
+php7-sysvshm-7.0.16-r0
+php7-curl-7.0.16-r0
+php7-shmop-7.0.16-r0
+php7-odbc-7.0.16-r0
+php7-phar-7.0.16-r0
+php7-pdo_pgsql-7.0.16-r0
+php7-imap-7.0.16-r0
+php7-pdo_dblib-7.0.16-r0
+php7-pgsql-7.0.16-r0
+php7-pdo_odbc-7.0.16-r0
 php7-xdebug-2.5.0-r1
-php7-zip-7.0.15-r0
-php7-apache2-7.0.15-r0
-php7-cgi-7.0.15-r0
-php7-ctype-7.0.15-r0
-php7-mcrypt-7.0.15-r0
-php7-wddx-7.0.15-r0
-php7-bcmath-7.0.15-r0
-php7-calendar-7.0.15-r0
-php7-tidy-7.0.15-r0
-php7-dom-7.0.15-r0
-php7-sockets-7.0.15-r0
-php7-soap-7.0.15-r0
+php7-zip-7.0.16-r0
+php7-apache2-7.0.16-r0
+php7-cgi-7.0.16-r0
+php7-ctype-7.0.16-r0
+php7-mcrypt-7.0.16-r0
+php7-wddx-7.0.16-r0
+php7-bcmath-7.0.16-r0
+php7-calendar-7.0.16-r0
+php7-tidy-7.0.16-r0
+php7-dom-7.0.16-r0
+php7-sockets-7.0.16-r0
+php7-soap-7.0.16-r0
 php7-apcu-5.1.8-r0
-php7-sysvmsg-7.0.15-r0
-php7-zlib-7.0.15-r0
-php7-ftp-7.0.15-r0
-php7-sysvsem-7.0.15-r0
-php7-pdo-7.0.15-r0
-php7-bz2-7.0.15-r0
-php7-mysqli-7.0.15-r0
+php7-sysvmsg-7.0.16-r0
+php7-zlib-7.0.16-r0
+php7-ftp-7.0.16-r0
+php7-sysvsem-7.0.16-r0
+php7-pdo-7.0.16-r0
+php7-bz2-7.0.16-r0
+php7-mysqli-7.0.16-r0
 ```
 
 ###### Licence
