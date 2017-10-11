@@ -4,19 +4,22 @@
 [![](https://images.microbadger.com/badges/image/yavin/alpine-php-fpm:5.6.svg)](https://microbadger.com/images/yavin/alpine-php-fpm:5.6)
 
 Tags:
-* `latest`, `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `latest`, `7.1` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/7.0/Dockerfile)
 * `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
 Image for php-fpm. It is based on Alpine linux and thats why it is very small (~60MB). Included extensions are required for Symfony framework 3+, that's why it should also work with other applications.
 * PHP 5.6.31
 
 ## Running
-```
+
+```sh
 docker run --rm -p 9000:9000 -v /path/of/application:/application yavin/alpine-php-fpm:5.6
 ```
 
-Fallowing nginx configuration allow to connect to this FPM setup:
-<pre>
+Following nginx configuration allow to connect to this FPM setup:
+
+```nginx
 server {
     # here some other configuration...
 
@@ -27,7 +30,7 @@ server {
         fastcgi_pass  <b>fpm-host-name:9000</b>;
     }
 }
-</pre>
+```
 
 Please note the path that is passed to FPM and compare it with the `docker run` command.
 Above example assume that the `/application/web` is the "public" folder of your app.
@@ -36,19 +39,22 @@ nginx variable.
 
 ## Custom php.ini settings
 Create `Dockerfile` file with fallowing content and php.ini file with desired settings (look at php.ini file in this repository)
-```
+
+```Dockerfile
 FROM yavin/alpine-php-fpm:5.6
 COPY php.ini /etc/php5/conf.d/50-setting.ini
 ```
-And then
-```
+And then 
+
+```sh
 docker build -t my-php-fpm .
 docker run --rm -p 9000:9000 -v /path/of/application:/application my-php-fpm:latest
 ```
 
 ## Change FPM parameters
 Copy php-fpm.conf and modify. You will probably want to change process manager settings:
-```
+
+```ini
 ; ...
 pm.max_children = 10
 pm.start_servers = 4
@@ -57,19 +63,22 @@ pm.max_spare_servers = 5
 ; ...
 ```
 and build your image:
-```
+
+```Dockerfile
 FROM yavin/alpine-php-fpm:5.6
 COPY php-fpm.conf /etc/php5/php-fpm.conf
 ```
 
 ## Add extension that you need
-```
+
+```Dockerfile
 FROM yavin/alpine-php-fpm:5.6
-RUN apk --update add php-zip && rm -rf /var/cache/apk/*
+RUN apk --update add php5-ftp && rm -rf /var/cache/apk/*
 ```
 
 #### PHP extensions included:
-```
+
+```sh
 $ php -m
 [PHP Modules]
 bcmath
