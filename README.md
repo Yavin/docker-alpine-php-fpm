@@ -4,7 +4,8 @@
 [![](https://images.microbadger.com/badges/image/yavin/alpine-php-fpm:latest.svg)](https://microbadger.com/images/yavin/alpine-php-fpm:latest)
 
 Tags:
-* `latest`, `7.1` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile)
+* `latest` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/master/Dockerfile) (based on alpine adge)
+* `7.1` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/7.1/Dockerfile)
 * `7.0` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/7.0/Dockerfile)
 * `5.6` [Dockerfile](https://github.com/Yavin/docker-alpine-php-fpm/blob/5.6/Dockerfile)
 
