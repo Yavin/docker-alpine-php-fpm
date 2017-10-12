@@ -25,9 +25,9 @@ server {
 
     location ~ \.php(/|$) {
         include       fastcgi_params;
-        fastcgi_param DOCUMENT_ROOT   <b>/application/web</b>;
-        fastcgi_param SCRIPT_FILENAME <b>/application/web</b>$fastcgi_script_name;
-        fastcgi_pass  <b>fpm-host-name:9000</b>;
+        fastcgi_param DOCUMENT_ROOT   /application/web;
+        fastcgi_param SCRIPT_FILENAME /application/web$fastcgi_script_name;
+        fastcgi_pass  fpm-host-name:9000;
     }
 }
 ```
