@@ -29,5 +29,6 @@ script:
   - curl http://127.0.0.1/config.php | grep "All checks passed successfully."
 
 after_failure:
+  - curl http://127.0.0.1/config.php
   - docker logs test-fpm
   - docker logs test-nginx
