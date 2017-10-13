@@ -1,7 +1,6 @@
 FROM alpine:3.6
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-    apk --update add \
+RUN apk --update add \
         php7 \
         php7-bcmath \
         php7-dom \
